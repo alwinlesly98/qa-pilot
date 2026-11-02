@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules
+web/dist
+
+# Local data: database, encryption key, run videos/screenshots, cloned repos, Playwright suites
+data
+
+# Secrets and local settings
+.env
+*.key
+
+# Bundles made with `npm run bundle`
+qa-pilot-*.zip
+
+# Playwright output if run directly from a suite folder
+test-results
+playwright-report
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log

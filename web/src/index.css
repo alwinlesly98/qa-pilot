@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-900: #312e81;
+}
+
+@layer base {
+  /* v4 defaults borders to currentColor and buttons to cursor:default; keep the classic look. */
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-slate-200);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  body {
+    background: radial-gradient(1200px 500px at 70% -10%, #eef2ff 0%, transparent 60%), #f8fafc;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background: var(--color-brand-100);
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-xs outline-hidden transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-100 disabled:bg-slate-50 disabled:text-slate-500;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold tracking-wide text-slate-500 uppercase;
+  }
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-xs;
+  }
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost,
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium whitespace-nowrap transition focus-visible:ring-4 focus-visible:ring-brand-100 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-linear-to-b from-brand-500 to-brand-600 text-white shadow-sm shadow-brand-600/20 hover:from-brand-600 hover:to-brand-700;
+  }
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-700 shadow-xs hover:border-slate-400 hover:bg-slate-50;
+  }
+  .btn-ghost {
+    @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .tab {
+    @apply -mb-px border-b-2 border-transparent px-3 pb-3 text-sm font-medium text-slate-500 hover:text-slate-800;
+  }
+  .tab-active {
+    @apply border-brand-600 text-brand-700;
+  }
+  .th {
+    @apply sticky top-0 z-10 border-b border-slate-200 bg-slate-50/95 px-3 py-2.5 text-left text-[11px] font-semibold tracking-wide whitespace-nowrap text-slate-500 uppercase backdrop-blur;
+  }
+  .td {
+    @apply border-b border-slate-100 px-3 py-3 align-top text-sm text-slate-700;
+  }
+}
